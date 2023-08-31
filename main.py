@@ -44,8 +44,6 @@ def title_screen():
     display.text("The Alan Game!", 20, 100, 320, 4)
     display.text(f"Press B to start", 20, 200, 320, 2)
     display.update()
-
-    time.sleep(3)
     
 def game_over_screen(score):
     display.set_pen(BLACK)
@@ -75,7 +73,7 @@ class Cloud():
         
 class Alan():
     
-    def __init__(self, initial_x, initial_y, initial_speed=15):
+    def __init__(self, initial_x, initial_y, initial_speed=20):
         self.x = initial_x
         self.y = initial_y
         self.speed = initial_speed
@@ -96,7 +94,7 @@ class Alan():
 
 class Present():
     
-    def __init__(self, initial_x, initial_y, initial_speed=10):
+    def __init__(self, initial_x, initial_y, initial_speed=20):
         self.x = initial_x
         self.y = initial_y
         self.speed = initial_speed
@@ -111,17 +109,17 @@ class Present():
         
 class Stone():
     
-    def __init__(self, initial_x, initial_y, initial_speed=10):
+    def __init__(self, initial_x, initial_y, initial_speed=20):
         self.x = initial_x
         self.y = initial_y
         self.speed = initial_speed
         
-        png.open_file("stone2.png")
+        png.open_file("stone.png")
         self.width = png.get_width()
         self.height = png.get_height()
     
     def render(self):
-        png.open_file("stone2.png")
+        png.open_file("stone.png")
         png.decode(self.x, self.y)
     
 
@@ -233,6 +231,8 @@ class Game():
         if self.hearts == 0:
             game.ended = True
             self.render()
+        
+        time.sleep(0.01)
         
 
 if __name__ == "__main__":
